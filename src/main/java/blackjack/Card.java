@@ -48,9 +48,9 @@ public class Card {
             case EIGHT: return "8";
             case NINE:  return "9";
             case TEN:   return "10";
-            case JACK:  return "J";
-            case QUEEN: return "Q";
-            case ACE:   return "A";
+            case JACK:  return "Jack";
+            case QUEEN: return "Queen";
+            case ACE:   return "Ace";
             default:    return "";
         }
     }
