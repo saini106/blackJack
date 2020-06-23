@@ -1,0 +1,11 @@
+{
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+
+    "java.home": "/home/gamb0l/.sdkman/candidates/java/current",
+    "maven.view": "flat"
+}

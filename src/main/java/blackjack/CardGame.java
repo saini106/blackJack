@@ -1,6 +1,8 @@
-import java.util.Stack;
-import Card;
-import Player;
+package blackjack;
+
+import java.util.*;
+import blackjack.Card;
+import blackjack.Player;
 
 public class CardGame extends BlackJack{
    private Player player;
@@ -29,11 +31,11 @@ public class CardGame extends BlackJack{
        Stack<Card> deck = new Stack<>();
        // shuffle cards
        for (c = 0; c < tempDeck.length; c++) {
-           int index = (1 * Math.random() * (52 -1));
+           int index = (int)(1 * Math.random() * (52 -1));
            Card temp = tempDeck[index];
            
-           tempDeck[index] = deck[c];
-           deck[c] = temp;
+           tempDeck[index] = tempDeck[c];
+           tempDeck[c] = temp;
        }
 
        for (c = 0; c < tempDeck.length; c++) 
@@ -90,7 +92,7 @@ public class CardGame extends BlackJack{
            return;
        }
 
-       System.out.Println ("Cannot discard another card!\n");
+       System.out.println ("Cannot discard another card!\n");
    }
 
    static ArrayList<Card> CreateHand (Stack<Card> deck)

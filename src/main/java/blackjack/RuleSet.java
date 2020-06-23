@@ -1,3 +1,5 @@
+package blackjack;
+
 public interface RuleSet {
     abstract void EvaluateCard ();
     abstract void EvaluateHand ();
