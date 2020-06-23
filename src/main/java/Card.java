@@ -1,44 +1,40 @@
-
-import java.util.ArrayList;
-import java.util.Collections;
-
-
 public class Card {
-     private ArrayList <Card> cards;
-    private int size;//the size of the grouping
-    
-    public Card(int givenSize)
+    public static enum Suit  
     {
-        size = givenSize;
-    }
-    
-    /**
-     * A method that will get the group of cards as an ArrayList
-     * @return the group of cards.
-     */
-    public ArrayList<Card> showCards()
+        HEARTS,
+        DIAMONDS,
+        CLUBS,
+        SPADES
+    } 
+    public static enum Face 
     {
-        return cards;
-    }
-    
-    public void shuffle()
-    {
-        Collections.shuffle(cards);
+        ONE,
+        TWO,
+        THREE,
+        FOUR,
+        FIVE,
+        SIX,
+        SEVEN,
+        EIGHT,
+        NINE,
+        TEN,
+        JACK,
+        KING,
+        QUEEN,
+        ACE
     }
 
-    /**
-     * @return the size of the group of cards
-     */
-    public int getSize() {
-        return size;
+    private Suit suit;
+    private Face face;
+
+    public Card (Suit suit, Face face)
+    {
+        this.suit = suit;
+        this.face = face;
     }
 
-    /**
-     * @param givenSize the max size for the group of cards
-     */
-    public void setSize(int givenSize) {
-        size = givenSize;
-    }
-    
-}//end class
-
+    public Suit getSuit () { return this.suit; }
+    public Face getFace () { return this.face; }
+    public void setFace (Face face) { this.face = face; }
+    public void setSuit (Suit suit) { this.suit = suit; }
+}
