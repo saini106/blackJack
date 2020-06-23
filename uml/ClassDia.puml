@@ -1,6 +1,4 @@
 @startuml BlackJack
-CardCollection "Many" *-- "Many" Card : Contains
-
 
 interface RuleSet {
     + {abstract} void EvaluateCard()
