@@ -1,0 +1,104 @@
+@startuml BlackJack
+CardCollection "Many" *-- "Many" Card : Contains
+
+
+interface RuleSet {
+    + {abstract} void EvaluateCard()
+    + {abstract} void EvaluateHand()
+    + {abstract} void MeetsWinCondition()
+    + {abstract} void MeetsLoseCondition()
+    + {abstract} void Draw()
+}
+
+BlackJack <|.. RuleSet
+abstract BlackJack {
+    - {static} int MaxDeckSize
+    - {static} int MaxHandSize
+    - {static} int MaxDraw
+    - {static} int MaxDiscard
+    --
+    + {static} int EvaluateHand( ArrayList<Card> )
+    + {static} int EvaluateCard( Card )
+    + {abstract} void Draw()
+    + {abstract} void Discard()
+    + {abstract} void CreateHand()
+    + {abstract} void MeetsWinCondition()
+    ..Getters..
+    + {static} int getMaxDeckSize()
+    + {static} int getMaxHandSize()
+    + {static} int getMaxDraw()
+    + {static} int getMaxDiscard()
+}
+
+CardGame <|-- BlackJack
+
+class CardGame {
+    - Player Player
+    - Player Dealer
+    - Stack<Card> Deck
+    --
+    + bool MeetsWinCondition()
+    + {static} Stack<Card> GenerateDeck()
+    + {static} Player getClosest( Player, Player )
+    + {static} void Draw( Player )
+    + {static} void Discard( Player )
+    + {static} ArrayList<Card> CreateHand()
+    ..Getters..
+    + Player getPlayer()
+    + Player getDealer()
+    + Stack<Card> getDeck()
+}
+
+CardGame "2" *-- Player : contains
+CardGame "Many" *-- Card : contains
+class Player {
+    - int number
+    - ArrayList<Card> Hand
+    - int handValue
+    + void ShowHand()
+    --
+    ..Getters..
+    + int getHandValue()
+    + int getNumber()
+    + int getCard( int )
+    ..Setters..
+    + int setHandValue( int )
+}
+
+Player "2" *-- Card : contains
+class Card {
+   - Suit suit
+   - Face face
+   --
+   ..Getters..
+   + getSuit()
+   + getFace()
+}
+
+Card "1" *-- "Many" Suit : Contains
+Card "1" *-- "Many" Face : Contains
+enum Face {
+    ONE
+    TWO
+    THREE
+    FOUR
+    FIVE
+    SIX
+    SEVEN
+    EIGHT
+    NINE
+    TEN
+    JACK
+    KING
+    QUEEN
+    ACE
+}
+
+enum Suit {
+    HEARTS
+    DIAMONDS 
+    SPADES 
+    CLUBS
+}
+
+@enduml
