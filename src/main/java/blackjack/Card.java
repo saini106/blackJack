@@ -1,4 +1,5 @@
 package blackjack;
+
 public class Card {
     public static enum Suit  
     {

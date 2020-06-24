@@ -15,52 +15,66 @@ abstract BlackJack {
     - {static} int MaxDraw
     - {static} int MaxDiscard
     --
-    + {static} int EvaluateHand( ArrayList<Card> )
-    + {static} int EvaluateCard( Card )
-    + {abstract} void Draw()
-    + {abstract} void Discard()
-    + {abstract} void CreateHand()
-    + {abstract} void MeetsWinCondition()
+    + {static} EvaluateHand( hand:ArrayList<Card> ):int
+    + {static} EvaluateCard( f:Card.Face ):int
+    + {abstract} Draw():void
+    + {abstract} Discard():void
+    + {abstract} CreateHand():void
+    + {abstract} MeetsWinCondition():void
     ..Getters..
-    + {static} int getMaxDeckSize()
-    + {static} int getMaxHandSize()
-    + {static} int getMaxDraw()
-    + {static} int getMaxDiscard()
+    + {static} getMaxDeckSize():int
+    + {static} getMaxHandSize():int
+    + {static} getMaxDraw():int
+    + {static} getMaxDiscard():int
 }
 
 CardGame <|-- BlackJack
+
 
 class CardGame {
     - Player Player
     - Player Dealer
     - Stack<Card> Deck
     --
-    + bool MeetsWinCondition()
-    + {static} Stack<Card> GenerateDeck()
-    + {static} Player getClosest( Player, Player )
-    + {static} void Draw( Player )
-    + {static} void Discard( Player )
-    + {static} ArrayList<Card> CreateHand()
+    + MeetsWinCondition():bool
+    + {static} GenerateDeck():Stack<Card>
+    + {static} getWinner( p2:Player, p1:Player ):Player
+    + {static} Draw( p:Player ):void
+    + {static} Discard( p:Player ):void
+    + {static} CreateHand():ArrayList<Card>
     ..Getters..
-    + Player getPlayer()
-    + Player getDealer()
-    + Stack<Card> getDeck()
+    + getPlayer():Player
+    + getDealer():Player
+    + getDeck():Stack<Card>
 }
 
-CardGame "2" *-- Player : contains
+CardGame "1" *-- Player : contains
+CardGame "1" *-- Dealer : contains
 CardGame "Many" *-- Card : contains
 class Player {
+    - {static} int nextNumber;
     - int number
     - ArrayList<Card> Hand
     - int handValue
-    + void ShowHand()
+    + ShowHand():void
     --
+    + Player (c1:Card, c2:Card):Player
+    + Player ():Player
+    + hasFullHand():bool
+    + addCard( c:Card ):void
     ..Getters..
-    + int getHandValue()
-    + int getNumber()
-    + int getCard( int )
+    + {static} getNextNumber():int
+    + getHandValue():int
+    + getNumber():int
+    + getCard( i:int ):Card
     ..Setters..
-    + int setHandValue( int )
+    + setHandValue( value:int ):int
+}
+
+Dealer <|-- Player
+class Dealer {
+    --
+    + getRevealedCard():Card
 }
 
 Player "2" *-- Card : contains
@@ -68,9 +82,12 @@ class Card {
    - Suit suit
    - Face face
    --
+   + {static} faceToString( f:Face ):String
+   + {static} suitToString( s:Suit ):String
    ..Getters..
-   + getSuit()
-   + getFace()
+   + getSuit():Suit
+   + getFace():Face
+   + toString():String
 }
 
 Card "1" *-- "Many" Suit : Contains
