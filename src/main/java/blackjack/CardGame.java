@@ -3,6 +3,7 @@ package blackjack;
 import java.util.*;
 import blackjack.Card;
 import blackjack.Player;
+import blackjack.Dealer;
 
 public class CardGame extends BlackJack{
    private Player player;
@@ -44,7 +45,7 @@ public class CardGame extends BlackJack{
         return deck;
    }
 
-   static Player getClosest (Player p1, Player p2)
+   static Player getWinner (Player p1, Player p2)
    {
        int p1HandDiff = 21 - p1.getHandValue ();
        int p2HandDiff = 21 - p2.GetHandValue ();

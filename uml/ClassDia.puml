@@ -48,22 +48,33 @@ class CardGame {
     + getDeck():Stack<Card>
 }
 
-CardGame "2" *-- Player : contains
+CardGame "1" *-- Player : contains
+CardGame "1" *-- Dealer : contains
 CardGame "Many" *-- Card : contains
 class Player {
+    - {static} int nextNumber;
     - int number
     - ArrayList<Card> Hand
     - int handValue
     + ShowHand():void
     --
-    +hasFullHand():bool
-    +addCard( c:Card ):void
+    + Player (c1:Card, c2:Card):Player
+    + Player ():Player
+    + hasFullHand():bool
+    + addCard( c:Card ):void
     ..Getters..
+    + {static} getNextNumber():int
     + getHandValue():int
     + getNumber():int
     + getCard( i:int ):Card
     ..Setters..
     + setHandValue( value:int ):int
+}
+
+Dealer <|-- Player
+class Dealer {
+    --
+    + getRevealedCard():Card
 }
 
 Player "2" *-- Card : contains
