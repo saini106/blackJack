@@ -29,8 +29,15 @@ public class CardGame extends BlackJack{
            }
        }
 
+       /**
+        * Generates a new deck of 52 cards that is shuffled. The deck is 
+        *   returned as a stack.
+        * @param void
+        * @return Stack<Card>
+        */
        Stack<Card> deck = new Stack<>();
-       // shuffle cards
+
+       // Populate a deck and shuffle the cards
        for (c = 0; c < tempDeck.length; c++) {
            int index = (int)(1 * Math.random() * (52 -1));
            Card temp = tempDeck[index];
@@ -39,16 +46,25 @@ public class CardGame extends BlackJack{
            tempDeck[c] = temp;
        }
 
+       // Copy the shuffled deck into a Stack
        for (c = 0; c < tempDeck.length; c++) 
            deck.push(tempDeck[c]);
         
         return deck;
    }
 
+   /**
+    *  Compares two player objects and determines which one is the
+    *   winner of the two. The winner is returned. If it is a tie,
+    *   NULL is returned.
+    * @param p1
+    * @param p2
+    * @return Player
+    */
    static Player getWinner (Player p1, Player p2)
    {
        int p1HandDiff = 21 - p1.getHandValue ();
-       int p2HandDiff = 21 - p2.GetHandValue ();
+       int p2HandDiff = 21 - p2.getHandValue ();
 
         // Who got exactly 21?
         if (p1HandDiff == 0)
@@ -76,6 +92,11 @@ public class CardGame extends BlackJack{
         return p2;
    }
 
+   /** 
+    * Draws a card from a stack of cards.
+    * @param p
+    * @param deck
+    */
    static void Draw (Player p, Stack<Card> deck)
    {
         if (!p.hasFullHand ()) {
@@ -86,6 +107,12 @@ public class CardGame extends BlackJack{
         System.out.Println ("Cannot draw another card!\n");
    }
 
+   /**
+    * Discards a card from a player's hand. Uses a card object 
+    * to identify the card to be discarded.
+    * @param p
+    * @param card
+    */
    static void Discard (Player p, Card card)
    {
        if(p.hasFullHand ()) {
@@ -96,6 +123,12 @@ public class CardGame extends BlackJack{
        System.out.println ("Cannot discard another card!\n");
    }
 
+   /**
+    * Generates a new hand by grabbing a full hand from the 
+    * stack of cards.
+    * @param deck
+    * @return ArrayList<Card>
+    */
    static ArrayList<Card> CreateHand (Stack<Card> deck)
    {
        ArrayList<Card> hand = new ArrayList<>();
