@@ -10,17 +10,22 @@ public abstract class BlackJack {
   
   
 public static int EvaluateHand(ArrayList<Card> hand){
-  int value = 0;
-  for (int i=0; i< hand.size(); i++)
-  {
-    value += EvaluateCard(hand.get(i).getFace());
-  }
-  return value;
+
+  if (hand.get(0).getFace() == Card.Face.ACE)
+    if (EvaluateCard (hand.get(1).getFace()) == 10) // is it another face card?
+        return 21;
+  if (hand.get(2).getFace() == Card.Face.ACE)
+    if (EvaluateCard (hand.get(0).getFace()) == 10) // is it another face card?
+        return 21;
+
+  return EvaluateCard(hand.get(0).getFace()) + 
+    EvaluateCard(hand.get(1).getFace()); 
 } 
        
     public static int EvaluateCard(Card.Face c){
        switch(c){
-            case ONE:   return 1;
+            case ONE:   
+            case ACE:   return 1;
             case TWO:   return 2;
             case THREE: return 3;
             case FOUR:  return 4;
@@ -33,23 +38,10 @@ public static int EvaluateHand(ArrayList<Card> hand){
             case KING:  return 10;
             case JACK:  return 10;
             case QUEEN: return 10;
-            case ACE:   return 11;
             default:    return 0;
        }
    }
-   
-   public void Draw(){
-       
-   }
-   public void Discard(){
-       
-   }
-   public void CreateHand(){
-       
-   }
-   public void MeetsWinCondition(){
-       
-   }
+
    public static int getMaxDeckSize(){
        return MaxDeckSize;         
    }
@@ -62,4 +54,9 @@ public static int EvaluateHand(ArrayList<Card> hand){
    public static int getMaxDiscard(){
        return MaxDiscard;
    }
+
+   public abstract void Draw();
+   public abstract void Discard();
+   public abstract void CreateHand();
+   public abstract void MeetsWinCondition();
 }
