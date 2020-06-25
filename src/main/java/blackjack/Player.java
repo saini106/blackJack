@@ -5,24 +5,24 @@ import java.util.ArrayList;
 
 public class Player{
 
-    int handValue;
-    private int id;
     private static int playerNumber;
-    
+
+    private int handValue;
+    private int id;
     private ArrayList<Card> hand;
     
-    Player(){
-        
-    }
+    Player(){}
     
     public Player(Card c1, Card c2){
-      
-        this.handValue = handValue;
-        hand.add(c1);
-        hand.add(c2);
-        id = playerNumber++;
+        this.hand.add(c1);
+        this.hand.add(c2);
+        this.id = playerNumber++;
+        handValue = BlackJack.EvaluateHand(hand);
     }
     
+    /**
+     *  Prints the cards to stdout
+     */
     public void ShowHand(){
         for(int i = 0; i < 2; i++){
             System.out.println(hand.get(i));
@@ -30,31 +30,35 @@ public class Player{
     }
     
 
-    public boolean hasFullHand(int handValue){
-        if(handValue==(21)){
+    /**
+     *  Determines whether the hand can accept more cards
+     * @param handValue
+     * @return boolean
+     */
+    public boolean hasFullHand (){
+        if (hand.size () == 2)
             return true;
-        }
-        else{
-            return false;
-        }
+        return false;
     }
     
+    /**
+     * Adds a card to the player's hand 
+     * @param c
+     */
     public void addCard(Card c){
-        hand.add(c);
+        this.hand.add(c);
+        // Recalculate Hand value
+        this.handValue = BlackJack.EvaluateHand(hand);
     }
     
-    public int getHandValue(int handValue){
-        return handValue;
+    public int getHandValue(){
+        return this.handValue;
     }
     
-    public int getNumber(int number){
-        return number;
+    public int getPlayerNumber(){
+        return this.id;
     }
     
-    public Card getCard(Card currentCard){
-        return currentCard;
-    }
-
     public void setHandValue(int handValue) {
         this.handValue = handValue;
     }
