@@ -1,16 +1,22 @@
 package blackjack;
 
+import java.util.ArrayList;
+
 
 public class Player{
-    int number;
+
     int handValue;
     private int id;
     private static int playerNumber;
     
     private ArrayList<Card> hand;
     
-    public Player(int number, int handValue, Card c1, Card c2){
-        this.number = number;
+    Player(){
+        
+    }
+    
+    public Player(Card c1, Card c2){
+      
         this.handValue = handValue;
         hand.add(c1);
         hand.add(c2);
@@ -25,7 +31,7 @@ public class Player{
     
 
     public boolean hasFullHand(int handValue){
-        if(handValue.equals(21)){
+        if(handValue==(21)){
             return true;
         }
         else{
@@ -52,5 +58,5 @@ public class Player{
     public void setHandValue(int handValue) {
         this.handValue = handValue;
     }
-    
+
 }
