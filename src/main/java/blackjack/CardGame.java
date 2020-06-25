@@ -7,14 +7,21 @@ import blackjack.Dealer;
 
 public class CardGame extends BlackJack{
    private Player player;
-   private Player dealer;
+   private Dealer dealer;
    private Stack<Card> Deck;
+   
+    public CardGame () {
+        GenerateDeck();
+       this.player = new Player(this.Deck.pop(), this.Deck.pop() );
+        this.dealer = new Dealer(this.Deck.pop(), this.Deck.pop() );
+    }
+    public Player getPlayer(){
+        return player;
+    }
+    public Dealer getDealer(){
+        return dealer;
+    }
 
-   public CardGame (Player player, Player dealer) 
-   {
-       this.player = player;
-       this.dealer = dealer;
-   }
 
    static Stack<Card> GenerateDeck ()
    {
@@ -104,7 +111,7 @@ public class CardGame extends BlackJack{
                 p.addCard (deck.pop ());
             return;
         }
-        System.out.Println ("Cannot draw another card!\n");
+        System.out.println ("Cannot draw another card!\n");
    }
 
    /**
