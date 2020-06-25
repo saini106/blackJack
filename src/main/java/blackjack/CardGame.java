@@ -16,25 +16,25 @@ public class CardGame extends BlackJack{
        this.dealer = dealer;
    }
 
+   /**
+    * Generates a new deck of 52 cards that is shuffled. The deck is 
+    *   returned as a stack.
+    * @return Stack<Card>
+    */
    static Stack<Card> GenerateDeck ()
    {
        Card[] tempDeck = new Card[52];
 
        // Load cards
-       int c;
+       int c = 0;
        for (int suit = 0; suit < 4; suit++) {
            for (int face = 0; face < 14; face++) {
                tempDeck[c] = new Card (
                    Card.Suit.values()[suit], Card.Face.values()[face]); 
+                c++;
            }
        }
 
-       /**
-        * Generates a new deck of 52 cards that is shuffled. The deck is 
-        *   returned as a stack.
-        * @param void
-        * @return Stack<Card>
-        */
        Stack<Card> deck = new Stack<>();
 
        // Populate a deck and shuffle the cards
@@ -97,45 +97,11 @@ public class CardGame extends BlackJack{
     * @param p
     * @param deck
     */
-   static void Draw (Player p, Stack<Card> deck)
+   public void Draw (Player p)
    {
-        if (!p.hasFullHand ()) {
-            if (!deck.empty ())
-                p.addCard (deck.pop ());
-            return;
-        }
-        System.out.Println ("Cannot draw another card!\n");
+        if (!this.Deck.empty ())
+            p.addCard (this.Deck.pop ());
+        return;
    }
 
-   /**
-    * Discards a card from a player's hand. Uses a card object 
-    * to identify the card to be discarded.
-    * @param p
-    * @param card
-    */
-   static void Discard (Player p, Card card)
-   {
-       if(p.hasFullHand ()) {
-           p.removeCard (card);
-           return;
-       }
-
-       System.out.println ("Cannot discard another card!\n");
-   }
-
-   /**
-    * Generates a new hand by grabbing a full hand from the 
-    * stack of cards.
-    * @param deck
-    * @return ArrayList<Card>
-    */
-   static ArrayList<Card> CreateHand (Stack<Card> deck)
-   {
-       ArrayList<Card> hand = new ArrayList<>();
-
-       hand.add (deck.pop ());
-       hand.add (deck.pop ());
-
-       return hand;
-   }
 }

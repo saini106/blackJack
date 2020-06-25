@@ -10,6 +10,8 @@ public class Player{
     private int handValue;
     private int id;
     private ArrayList<Card> hand;
+
+    private boolean bust;
     
     Player(){}
     
@@ -18,6 +20,7 @@ public class Player{
         this.hand.add(c2);
         this.id = playerNumber++;
         handValue = BlackJack.EvaluateHand(hand);
+        bust = false;
     }
     
     /**
