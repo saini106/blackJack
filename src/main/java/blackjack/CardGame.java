@@ -7,14 +7,21 @@ import blackjack.Dealer;
 
 public class CardGame extends BlackJack{
    private Player player;
-   private Player dealer;
+   private Dealer dealer;
    private Stack<Card> Deck;
+   
+    public CardGame () {
+        GenerateDeck();
+       this.player = new Player(this.Deck.pop(), this.Deck.pop() );
+        this.dealer = new Dealer(this.Deck.pop(), this.Deck.pop() );
+    }
+    public Player getPlayer(){
+        return player;
+    }
+    public Dealer getDealer(){
+        return dealer;
+    }
 
-   public CardGame (Player player, Player dealer) 
-   {
-       this.player = player;
-       this.dealer = dealer;
-   }
 
    /**
     * Generates a new deck of 52 cards that is shuffled. The deck is 
@@ -99,9 +106,18 @@ public class CardGame extends BlackJack{
     */
    public void Draw (Player p)
    {
+<<<<<<< HEAD
         if (!this.Deck.empty ())
             p.addCard (this.Deck.pop ());
         return;
+=======
+        if (!p.hasFullHand ()) {
+            if (!deck.empty ())
+                p.addCard (deck.pop ());
+            return;
+        }
+        System.out.println ("Cannot draw another card!\n");
+>>>>>>> 61fe00c67943b482ca87b4c9da1bafa7d9e4aa78
    }
 
 }
