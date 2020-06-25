@@ -48,7 +48,7 @@ public class Player{
      * Adds a card to the player's hand 
      * @param c
      */
-    public void addCard(Card c){
+    public void hit(Card c){
         this.hand.add(c);
         // Recalculate Hand value
         this.handValue = BlackJack.EvaluateHand(hand);

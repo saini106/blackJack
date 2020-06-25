@@ -104,20 +104,11 @@ public class CardGame extends BlackJack{
     * @param p
     * @param deck
     */
-   public void Draw (Player p)
+   public void Hit (Player p)
    {
-<<<<<<< HEAD
-        if (!this.Deck.empty ())
-            p.addCard (this.Deck.pop ());
+        if (!deck.empty ())
+            p.addCard (deck.pop ());
         return;
-=======
-        if (!p.hasFullHand ()) {
-            if (!deck.empty ())
-                p.addCard (deck.pop ());
-            return;
-        }
-        System.out.println ("Cannot draw another card!\n");
->>>>>>> 61fe00c67943b482ca87b4c9da1bafa7d9e4aa78
    }
 
 }
