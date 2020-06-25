@@ -5,5 +5,6 @@ public class CardTest {
    {
        Card c = new Card (Card.Suit.HEARTS, Card.Face.ACE);
        
+       System.out.println (c);
    }
 }
