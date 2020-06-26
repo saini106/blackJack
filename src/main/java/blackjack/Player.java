@@ -25,12 +25,13 @@ public class Player{
     
     /**
      *  Prints the cards to stdout
+     * @return 
      */
-    public void ShowHand(){
-        for(int i = 0; i < 2; i++){
-            System.out.println(hand.get(i));
-        }
+    public String ShowHand(){
+        return toString();
     }
+    
+    
     
 
     /**
