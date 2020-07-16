@@ -1,6 +1,12 @@
 package blackjack;
 
 public class Card {
+
+    static Object suitToString() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
     public static enum Suit  
     {
         HEARTS,
@@ -70,9 +76,9 @@ public class Card {
     public void setFace (Face face) { this.face = face; }
     public void setSuit (Suit suit) { this.suit = suit; }
 
-    @Override
+ 
     public String toString ()
     {
-        return faceToString(this.face) + " of " + suitToString(this.suit);
+        return "face: " + faceToString(this.face) + "suit: "+suitToString(this.suit);
     }
 }
