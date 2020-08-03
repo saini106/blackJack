@@ -2,11 +2,6 @@ package blackjack;
 
 public class Card {
 
-    static Object suitToString() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-
     public static enum Suit  
     {
         HEARTS,
