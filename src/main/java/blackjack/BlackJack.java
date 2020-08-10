@@ -67,9 +67,7 @@ public abstract class BlackJack {
        return MaxDiscard;
    }
 
-   public abstract void Draw();
-   public abstract void GetWinner();
-   public abstract void MeetsLoseCondition();
-   public abstract void Hit();
-   public abstract void initHand();
+   public abstract Player getWinner ();
+   public abstract boolean checkBust ();
+   public abstract void hitPlayer ();
 }

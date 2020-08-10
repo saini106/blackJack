@@ -4,13 +4,11 @@ public class Game {
     
     private static void main (String[] args)
     {
-        boolean stand = false;
-
         CardGame game = new CardGame ();
         // Game loop
         do {
-            System.out.println ("Dealer :" + CardGame.getDealer().getRevealCard());
-            System.out.println ("Player :" + CardGame.getPlayer().ShowHand() + "\n");
+            System.out.println ("Dealer :" + game.getDealer().getRevealCard() );
+            System.out.println ("Player :" + game.getPlayer().showHand() + "\n");
 
             System.out.print ("Hit or Stand? [H|S]:");
             char input ='c';
@@ -18,7 +16,7 @@ public class Game {
             switch (input) {
                 case 'H':
                 case 'h':
-                    game.Hit (game.getPlayer());
+                    game.hitPlayer ();
                     break;
                 case 'S':
                 case 's':
@@ -28,14 +26,14 @@ public class Game {
             }
 
             if (input == 'H' || input == 'h') {
-                game.Hit (game.getPlayer ());
-                if (game.getPlayer().getHandValue() > 21)
-                    game.getPlayer().toggleBust();
+                game.hitPlayer ();
+                if (game.checkBust ()) {}
+                    //TODO: Code to exit game loop. Player looses.
             } else {
-                game.getPlayer().toggleStand();
+                game.standPlayer();
             }
 
-        } while (CardGame.getPlayer().stand() || CardGame.getPlayer().bust());
+        } while (game.getPlayer().isStanding() || game.checkBust());
 
         // Compare dealer hand with player hand
         game.getWinner();

@@ -1,13 +1,10 @@
 package blackjack;
 
-import java.util.ArrayList;
-
-
 public class Player extends BlackJackPlayer 
 {
     private static int playerNumber = 0;
     private int number;
-    private Hand hand;
+    protected Hand hand;
 
     Player() {}
     public Player (Card c1, Card c2) {
@@ -26,5 +23,7 @@ public class Player extends BlackJackPlayer
     @Override
     public int getHandValue () { return this.hand.getValue(); }
     
-    public int getPlayerNumber(){ return this.number; }
+    public int getPlayerNumber() { return this.number; }
+
+    public String showHand () { return this.hand.toString (); }
 }

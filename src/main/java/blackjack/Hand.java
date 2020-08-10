@@ -28,12 +28,29 @@ public class Hand {
         return cards.get (i);
     }
 
+    public void addCard (Card c) 
+    {
+        cards.add (c);
+        updateHandValue ();
+    }
+
     public void updateHandValue () { this.value = EvaluateHand (this.cards); }
 
     public void showCards () 
     {
         for (int i = 0; i < this.cards.size (); i++) 
             System.out.println (this.getCardAt (i).toString());
+    }
+
+    @Override
+    public String toString () 
+    {
+        String out = "";
+
+        for (int i = 0; i < this.cards.size(); i++)
+            out += cards.get(i).toString ();
+
+        return out;
     }
 
 }

@@ -1,6 +1,5 @@
+package blackjack;
 
-import blackjack.Card;
-import blackjack.CardGame;
 import java.util.ArrayList;
 import java.util.Stack;
 

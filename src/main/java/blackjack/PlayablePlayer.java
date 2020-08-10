@@ -1,5 +1,4 @@
 package blackjack;
-import java.util.*;
 
 public class PlayablePlayer extends Player
 {
@@ -10,7 +9,10 @@ public class PlayablePlayer extends Player
 
     public boolean isStanding () { return this.stand; }
 
-    public void toggleStand () { this.stand = (!this.stand); }
+    public void stand () { this.stand = (!this.stand); }
 
-    public void addCard (Card c) { this.addCard (c); }
+    public void addCard (Card c) 
+    { 
+        this.hand.addCard(c);
+    }
 }
