@@ -7,5 +7,6 @@
     },
 
     "java.home": "/home/gamb0l/.sdkman/candidates/java/current",
-    "maven.view": "flat"
+    "maven.view": "flat",
+    "java.configuration.updateBuildConfiguration": "automatic"
 }

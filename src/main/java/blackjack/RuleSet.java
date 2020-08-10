@@ -4,5 +4,5 @@ public interface RuleSet {
     abstract void EvaluateCard ();
     abstract void EvaluateHand ();
     abstract void MeetsWinCondition ();
-    abstract void Draw ();
+    abstract void MeetsLoseCondition ();
 }

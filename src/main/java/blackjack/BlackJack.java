@@ -1,6 +1,6 @@
 package blackjack;
-import java.util.*;
 
+import java.util.*;
 
 public abstract class BlackJack {
    private static int MaxDeckSize;
@@ -9,18 +9,30 @@ public abstract class BlackJack {
    private static int MaxDiscard;
   
   
-public static int EvaluateHand(ArrayList<Card> hand){
+    public static int EvaluateHand(ArrayList<Card> hand){
+        Stack<Card> aces = new Stack<Card>();
+        int handValue = 0;
 
-  if (hand.get(0).getFace() == Card.Face.ACE)
-    if (EvaluateCard (hand.get(1).getFace()) == 10) // is it another face card?
-        return 21;
-  if (hand.get(2).getFace() == Card.Face.ACE)
-    if (EvaluateCard (hand.get(0).getFace()) == 10) // is it another face card?
-        return 21;
+        for (int i = 0; i < hand.size (); i++) {
+            Card c = hand.get (i);
+            if (c.getFace() == Card.Face.ACE) 
+                aces.push (c); // save it for later
+            else 
+                handValue += BlackJack.EvaluateCard (c.getFace());
+        }
 
-  return EvaluateCard(hand.get(0).getFace()) + 
-    EvaluateCard(hand.get(1).getFace()); 
-} 
+        // Evaluate aces if there were any
+        if (aces.size() != 0)
+            for (int i = 0; i < aces.size(); i++) {
+                if (handValue + 11 < 21) 
+                    handValue += 11;
+                else 
+                    handValue += 1;
+                aces.pop();
+            }
+
+        return handValue;
+    }
        
     public static int EvaluateCard(Card.Face c){
        switch(c){
@@ -56,7 +68,8 @@ public static int EvaluateHand(ArrayList<Card> hand){
    }
 
    public abstract void Draw();
-   public abstract void Discard();
-   public abstract void CreateHand();
-   public abstract void MeetsWinCondition();
+   public abstract void GetWinner();
+   public abstract void MeetsLoseCondition();
+   public abstract void Hit();
+   public abstract void initHand();
 }

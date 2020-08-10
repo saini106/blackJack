@@ -14,28 +14,7 @@ public class Hand {
 
     private static int EvaluateHand (ArrayList<Card> hand)
     {
-        Stack<Card> aces = new Stack<Card>();
-        int handValue = 0;
-
-        for (int i = 0; i < hand.size (); i++) {
-            Card c = hand.get (i);
-            if (c.getFace() == Card.Face.ACE) 
-                aces.push (c); // save it for later
-            else 
-                handValue += BlackJack.EvaluateCard (c.getFace());
-        }
-
-        // Evaluate aces if there were any
-        if (aces.size() != 0)
-            for (int i = 0; i < aces.size(); i++) {
-                if (handValue + 11 < 21) 
-                    handValue += 11;
-                else 
-                    handValue += 1;
-                aces.pop();
-            }
-
-        return handValue;
+        return BlackJack.EvaluateHand (hand);
     }
 
 
