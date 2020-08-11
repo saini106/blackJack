@@ -1,6 +1,5 @@
 package blackjack;
 
-import java.util.ArrayList;
 import java.util.Stack;
 
 
@@ -17,7 +16,7 @@ public DeckOfCards(){
        Card[] tempDeck = new Card[52];
        int c = 0;
        for (int suit = 0; suit < 4; suit++) {
-           for (int face = 0; face < 14; face++) {
+           for (int face = 0; face < 13; face++) {
                tempDeck[c] = new Card (
                    Card.Suit.values()[suit], Card.Face.values()[face]); 
                 c++;
@@ -45,9 +44,7 @@ public DeckOfCards(){
         }
         return null;
     }
-   /* public Card[] DrawCardSet(int amount){
-        amount = 
-    } */
+
 }
 
 
