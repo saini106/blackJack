@@ -6,7 +6,8 @@ public class Player extends BlackJackPlayer
     private int number;
     protected Hand hand;
 
-    Player() {}
+    Player() {
+    }
     public Player (Card c1, Card c2) {
         this.hand = new Hand (c1, c2);
         this.number = getNextPlayerNumber();
