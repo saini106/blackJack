@@ -10,7 +10,7 @@ public abstract class BlackJack {
   
   
     public static int EvaluateHand(ArrayList<Card> hand){
-        Stack<Card> aces = new Stack<Card>();
+        Stack<Card> aces = new Stack<>();
         int handValue = 0;
 
         for (int i = 0; i < hand.size (); i++) {
