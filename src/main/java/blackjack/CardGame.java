@@ -66,4 +66,6 @@ public class CardGame extends BlackJack{
 
    public void standPlayer () { if (!player.isStanding()) player.stand(); }
 
+   public boolean playerStanding () { return player.isStanding(); }
+
 }
