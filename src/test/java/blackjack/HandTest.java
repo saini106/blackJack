@@ -36,5 +36,13 @@ public class HandTest {
     @AfterEach
     public void tearDown() {
     }
+
+    @Test 
+    public void testGetCardAt ()
+    {
+        Hand hand = new Hand(
+            new Card(Card.Suit.CLUBS, Card.Face.FIVE),
+            new Card(Card.Suit.CLUBS, Card.Face.KING));
+    }
     
 }
