@@ -15,6 +15,7 @@ public abstract class BlackJack {
 
         for (int i = 0; i < hand.size (); i++) {
             Card c = hand.get (i);
+            
             if (c.getFace() == Card.Face.ACE) 
                 aces.push (c); // save it for later
             else 
@@ -37,20 +38,20 @@ public abstract class BlackJack {
     public static int EvaluateCard(Card.Face c){
        switch(c){
             case ONE:   
-            case ACE:   return 1;
-            case TWO:   return 2;
-            case THREE: return 3;
-            case FOUR:  return 4;
-            case FIVE:  return 5;
-            case SIX:   return 6;
-            case SEVEN: return 7;
-            case EIGHT: return 8;
-            case NINE:  return 9;
-            case TEN:   return 10;
-            case KING:  return 10;
-            case JACK:  return 10;
-            case QUEEN: return 10;
-            default:    return 0;
+            case ACE:   return  1;
+            case TWO:   return  2;
+            case THREE: return  3;
+            case FOUR:  return  4;
+            case FIVE:  return  5;
+            case SIX:   return  6;
+            case SEVEN: return  7;
+            case EIGHT: return  8;
+            case NINE:  return  9;
+            case TEN:   return  10;
+            case KING:  return  10;
+            case JACK:  return  10;
+            case QUEEN: return  10;
+            default:    return  0;
        }
    }
 

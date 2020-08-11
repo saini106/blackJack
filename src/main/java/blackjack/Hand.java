@@ -3,13 +3,14 @@ import java.util.*;
 
 public class Hand {
 
-    ArrayList<Card> cards = new ArrayList<Card>();
+    ArrayList<Card> cards = new ArrayList<>();
     int value = 0;
 
     public Hand (Card c1, Card c2) {
         cards.add (c1);
         cards.add (c2);
-        updateHandValue ();
+        
+      updateHandValue();
     }
 
     private static int EvaluateHand (ArrayList<Card> hand)

@@ -1,44 +1,61 @@
 package blackjack;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {
+
+    private static ArrayList<Card> hand;
     
     public static void main (String[] args)
     {
         CardGame game = new CardGame ();
+        Player player = new Player();
+        DeckOfCards doc = new DeckOfCards();
+        Dealer dealer = new Dealer();
+        
+        
+        
+        game.getPlayer();
+        game.getDealer();
         
             System.out.print ("Hit or Stand? [H|S]:");
-             
             Scanner input = new Scanner(System.in);
-            
             char inpu = input.next().charAt(0);
-             
-            switch (inpu) {
-                case 'H':
-                case 'h':
-                    game.hitPlayer ();
-                    break;
-                case 'S':
-                case 's':
-                    break;
-                default: 
-                    System.out.println ("Not an option!");
-            }
-        
+ 
             if (inpu == 'H' || inpu == 'h') {
-                game.hitPlayer ();
-                if (game.checkBust ()) {
-                    game.getWinner();
-                }
-                   
-                  
-            else {
+             
+                DeckOfCards.GenerateDeck();
+                game.hitPlayer();
+                
+                
+             
+                System.out.println(doc.Draw()); 
+            
+             if(player.getHandValue() < 21){
+                 System.out.println("Hit or Stand");
+                 if(inpu == 'h' || inpu == 'H'){
+                   game.hitPlayer();
+                     System.out.println();
+                 }
+                 
+             }
+               
+            }  
+            else if (inpu == 's' || inpu == 'S') {
                 game.standPlayer();
             }
-            }
-            System.out.println ("Dealer :" + game.getDealer().getRevealCard() );
-            System.out.println ("Player :" + game.getPlayer().showHand() + "\n");
+               
+                  
+                           
+    
+            
+                    
+                
+            
+            
+          //  System.out.println ("Dealer :" + game.getDealer().getRevealCard() );
+          //  System.out.println ("Player :" + game.getPlayer().showHand() + "\n");
            
         // Compare dealer hand with player hand
        game.getWinner();
