@@ -15,20 +15,12 @@ public abstract class BlackJack {
 
         for (int i = 0; i < hand.size (); i++) {
             Card c = hand.get (i);
-<<<<<<< HEAD
             if (c != null) {
                 if (c.getFace() == Card.Face.ACE) 
                     aces.push (c); // save it for later
                 else 
                     handValue += BlackJack.EvaluateCard (c.getFace());
             }
-=======
-            
-            if (c.getFace() == Card.Face.ACE) 
-                aces.push (c); // save it for later
-            else 
-                handValue += BlackJack.EvaluateCard (c.getFace());
->>>>>>> aa0e44837060f3742cff083d055e093f55ec0032
         }
 
         // Evaluate aces if there were any
@@ -45,7 +37,6 @@ public abstract class BlackJack {
     }
        
     public static int EvaluateCard(Card.Face c){
-<<<<<<< HEAD
         if (c == null) return 0;
         switch(c){
             case ACE:   return 1;
@@ -63,25 +54,6 @@ public abstract class BlackJack {
             case QUEEN: return 10;
             default:    return 0;
         }
-=======
-       switch(c){
-            case ONE:   
-            case ACE:   return  1;
-            case TWO:   return  2;
-            case THREE: return  3;
-            case FOUR:  return  4;
-            case FIVE:  return  5;
-            case SIX:   return  6;
-            case SEVEN: return  7;
-            case EIGHT: return  8;
-            case NINE:  return  9;
-            case TEN:   return  10;
-            case KING:  return  10;
-            case JACK:  return  10;
-            case QUEEN: return  10;
-            default:    return  0;
-       }
->>>>>>> aa0e44837060f3742cff083d055e093f55ec0032
    }
 
    public static int getMaxDeckSize(){
