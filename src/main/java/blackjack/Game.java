@@ -2,7 +2,7 @@ package blackjack;
 
 public class Game {
     
-    private static void main (String[] args)
+    public static void main (String[] args)
     {
         CardGame game = new CardGame ();
         // Game loop
