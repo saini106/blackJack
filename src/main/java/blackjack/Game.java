@@ -9,8 +9,9 @@ public class Game {
     
     public static void main (String[] args)
     {
-        CardGame game = new CardGame ();
+        CardGame game = new CardGame();
         Scanner input = new Scanner(System.in);
+         
 
         // Print player & dealer cards
         while (!game.checkBust () || game.playerStanding ()) {
@@ -23,9 +24,11 @@ public class Game {
             } else if (inpu == 's' || inpu == 'S') {
                 game.standPlayer();
             }
-
+            
+              game.printCards(hand,0);
             // Print player & dealer cards
         }
+        
 
         Player winner = game.getWinner();
         // Inform user who won using winner

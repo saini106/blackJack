@@ -1,14 +1,33 @@
 package blackjack;
 
+import java.util.ArrayList;
+
 public class CardGame extends BlackJack{
    private PlayablePlayer player;
    private Dealer dealer;
    private DeckOfCards deck;
+  
    
     public CardGame () {
         this.deck = new DeckOfCards();
         this.player = new PlayablePlayer (this.deck.Draw(), this.deck.Draw());
         this.dealer = new Dealer (this.deck.Draw(), this.deck.Draw());
+    }
+    
+    public void printCards(ArrayList<Card> cards) {
+        printCards(cards, 0); 
+    }
+
+    public void printCards(ArrayList<Card> cards, int flippedCards) {
+        for (Card card : cards) {
+            
+            if (flippedCards == 0) {
+                System.out.println((card.getFace() + " of " + card.getSuit()));
+            } else {
+                System.out.println("face down card");
+                flippedCards--;
+            }
+        }
     }
 
     public PlayablePlayer getPlayer(){ return player; } 

@@ -1,7 +1,7 @@
 package blackjack;
 
 public class Card {
-
+  
     public static enum Suit  
     {
         HEARTS,
@@ -76,4 +76,5 @@ public class Card {
     {
         return "face: " + faceToString(this.face) + "suit: "+suitToString(this.suit);
     }
+  
 }
